@@ -1,6 +1,10 @@
 # Bilet Satış Otomasyonu
 
 Bu proje, PHP (frameworksüz) ve SQLite veritabanı kullanılarak geliştirilmiş basit bir otobüs bileti satış sistemidir. Sistem, kullanıcıların sefer aramasına, bilet almasına, firma yöneticilerinin sefer ve kupon yönetmesine, adminin ise tüm sistemi yönetmesine olanak tanır. Proje, Docker kullanılarak kolayca çalıştırılabilir hale getirilmiştir.
+  **Veritabanı Kurulumu:**
+    * Veritabanı dosyası (`var/bilet.sqlite`) ve gerekli tablolar, uygulamaya (`http://localhost:8080`) **ilk kez erişildiğinde otomatik olarak oluşturulacaktır**. Herhangi bir manuel adıma gerek yoktur.
+    * Kurulumun başarılı olup olmadığını veya bir sorun olup olmadığını kontrol etmek için `http://localhost:8080/setup.php` adresine gidebilirsiniz (Bu sayfa artık sadece durumu gösterir).
+    * Eğer ilk erişimde hata alırsanız veya `setup.php` sayfasında hata görürseniz, Docker loglarını (`docker-compose logs -f app`) ve `var` klasörünün yazma izinlerini (özellikle Windows kullanıyorsanız Adım 4'ü) kontrol edin.
 
 ## Özellikler
 
