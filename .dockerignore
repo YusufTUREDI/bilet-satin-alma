@@ -1,0 +1,24 @@
+# Git dosyaları
+.git
+.gitignore
+
+# Docker dosyaları (imajın içine kopyalanmasına gerek yok)
+Dockerfile
+docker-compose.yml
+apache/
+.dockerignore
+
+# README dosyası (imajın içine kopyalanmasına gerek yok)
+README.md
+
+# Composer bağımlılıkları (Dockerfile içinde kuruyoruz, kopyalamaya gerek yok)
+vendor/
+
+# Veritabanı dosyaları (boş var klasörü kopyalansın yeterli)
+var/bilet.sqlite
+var/bilet.sqlite-shm
+var/bilet.sqlite-wal
+
+# Windows/macOS sistem dosyaları
+Thumbs.db
+.DS_Store

@@ -1,0 +1,25 @@
+# Docker Compose dosya formatı sürümü
+version: '3.8'
+
+# Çalışacak servisleri tanımlıyoruz
+services:
+  # 'app' adında bir servis (web sunucumuz PHP+Apache)
+  app:
+    # Bu servisin imajını oluşturmak için '.' (bu dizindeki) Dockerfile'ı kullan
+    build: .
+    # Konteynere kolayca erişmek için bir isim verelim
+    container_name: bilet_satin_alma_app
+    # Port yönlendirmesi: Bilgisayarımızın 8080 portuna gelen istekleri
+    # konteynerin 80 portuna (Apache'nin dinlediği port) gönder
+    ports:
+      - "8080:80"
+    # Volume (Dosya/Klasör Bağlantıları):
+    volumes:
+      # '.' (proje ana dizini) içindeki her şeyi konteynerdeki '/var/www/html' içine bağla.
+      # NOT: Bu sayede kodda yaptığın değişiklikler anında konteynere yansır (geliştirme için ideal).
+      # Ancak Windows'ta bu, 'var' klasörü için izin sorunlarına yol açabilir (Adım 7'de çözeceğiz).
+      - .:/var/www/html
+      # Apache yapılandırma dosyamızı konteynerdeki doğru yere bağla.
+      - ./apache/000-default.conf:/etc/apache2/sites-available/000-default.conf
+    # Konteyner bir hata nedeniyle durursa veya Docker yeniden başlarsa ne olacağını belirtir.
+    restart: unless-stopped

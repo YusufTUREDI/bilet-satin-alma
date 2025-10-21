@@ -1,0 +1,21 @@
+# ---- ROOT /.htaccess ----
+
+# 404 sayfası
+ErrorDocument 404 /bilet-satin-alma/pages/404.php
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Proje alt dizinini belirt (XAMPP için önemli!)
+  RewriteBase /bilet-satin-alma/
+
+  # İstenen yol gerçek bir dosya veya klasörse dokunma
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # Kökteki .php dosya adlarını /pages/ altındaki dosyalara yönlendir
+  RewriteRule ^(login|profil|cikis|firma_sefer_listesi|firma_sefer_ekle|sefer_duzenle|register|sefer_iptal|setup|kuponlar|bilet_al|bilet_ara|biletlerim|bilet_iptal|bilet_pdf|sefer_detay|admin_firma_adminleri|kullanici_listesi)\.php$ pages/$1.php [L]
+</IfModule>
+
+# ---- /END ----
