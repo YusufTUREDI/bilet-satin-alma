@@ -42,7 +42,7 @@ function nav_html(): string
             <a class="chip" href="<?= e(PAGES_URL) ?>/profil.php">Profilim</a>
             <a class="chip danger" href="<?= e(PAGES_URL) ?>/cikis.php">Çıkış</a>
 
-          <?php else: ?>
+          <?php else:  ?>
             <a class="chip" href="<?= e(PAGES_URL) ?>/bilet_al.php">Bilet ara</a>
             <span class="spacer"></span>
             <a class="chip primary" href="<?= e(PAGES_URL) ?>/login.php">Giriş yap</a>
