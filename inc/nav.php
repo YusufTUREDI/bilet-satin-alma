@@ -1,7 +1,8 @@
 <?php
 require_once __DIR__ . '/auth.php';
 
-function nav_html(): string {
+function nav_html(): string
+{
     $u    = current_user();
     $role = $u['role'] ?? null;
 
@@ -21,7 +22,7 @@ function nav_html(): string {
               <a class="chip" href="<?= e(PAGES_URL) ?>/firma_sefer_listesi.php">Seferlerim</a>
               <a class="chip primary" href="<?= e(PAGES_URL) ?>/firma_sefer_ekle.php">Yeni sefer ekle</a>
               <a class="chip" href="<?= e(PAGES_URL) ?>/kuponlar.php">Kuponlar</a>
-            <?php else: ?>
+            <?php elseif ($role === 'user'):  ?>
               <a class="chip" href="<?= e(PAGES_URL) ?>/bilet_al.php">Bilet ara</a>
               <a class="chip" href="<?= e(PAGES_URL) ?>/biletlerim.php">Biletlerim</a>
             <?php endif; ?>
@@ -29,12 +30,12 @@ function nav_html(): string {
             <span class="spacer"></span>
 
             <?php if ($role === 'user' && isset($u['id'])):
-              $pdo = db();
-              $st = $pdo->prepare('SELECT credit_cents FROM users WHERE id=?');
-              $st->execute([(int)$u['id']]);
-              $cc = (int)$st->fetchColumn();
-              $cc_tl = number_format($cc/100, 2, ',', '.');
-            ?>
+                $pdo = db();
+                $st = $pdo->prepare('SELECT credit_cents FROM users WHERE id=?');
+                $st->execute([(int)$u['id']]);
+                $cc = (int)$st->fetchColumn();
+                $cc_tl = number_format($cc/100, 2, ',', '.');
+                ?>
               <span class="chip muted">Cüzdan: <?= e($cc_tl) ?> TL</span>
             <?php endif; ?>
 

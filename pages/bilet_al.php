@@ -7,11 +7,21 @@ $pdo  = db();
 $u    = current_user();
 $role = $u['role'] ?? null;
 
+// --- YENİ EKLENEN KONTROL ---
+// Eğer kullanıcı giriş yapmışsa ama rolü 'user' değilse, ana sayfaya yönlendir.
+if ($u && $role !== 'user') {
+    bildirim_ekle('error', 'Bu sayfaya sadece kullanıcılar erişebilir.');
+    header('Location: ' . BASE_URL . '/');
+    exit;
+}
+// --- KONTROL SONU ---
+
 function tlx(int $c): string { return number_format($c/100, 2, ',', '.'); }
 
 $flash = bildirim_al();
 $hatalar_satinal = [];
 
+/* -------------------- SATIN ALMA -------------------- */
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['islem'] ?? '') === 'satinal') {
     csrf_check($_POST['csrf'] ?? '');
     if (!$u || $role !== 'user') { http_response_code(403); exit('Erişim engellendi.'); }
@@ -106,7 +116,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['islem'] ?? '') === 'satina
 
         $pdo->commit();
         bildirim_ekle('success', 'Bilet satın alındı.');
-        header('Location: ' . (BASE_URL . '/pages/bilet_al.php'));
+        header('Location: ' . (BASE_URL . '/pages/biletlerim.php')); // Biletlerim sayfasına yönlendir
         exit;
 
     } catch (Throwable $e) {
@@ -115,6 +125,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['islem'] ?? '') === 'satina
     }
 }
 
+/* -------------------- ARAMA -------------------- */
 $from = trim((string)($_GET['from_city'] ?? ''));
 $to   = trim((string)($_GET['to_city'] ?? ''));
 $dt   = trim((string)($_GET['date'] ?? ''));
