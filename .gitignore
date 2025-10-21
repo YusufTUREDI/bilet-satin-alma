@@ -1,16 +1,23 @@
-# Composer tarafından yüklenen bağımlılıklar
+Composer tarafından yüklenen bağımlılıklar
+
 /vendor/
 
-# SQLite veritabanı ve geçici dosyaları (Repo'ya dahil etmiyoruz, setup.php ile oluşturulacak)
+SQLite veritabanı dosyaları artık yoksayılmıyor, depoya dahil edilecek.
+
 /var/bilet.sqlite
+
 /var/bilet.sqlite-shm
+
 /var/bilet.sqlite-wal
 
-# Windows küçük resim önbelleği
+Windows küçük resim önbelleği
+
 Thumbs.db
 
-# macOS sistem dosyası
+macOS sistem dosyası
+
 .DS_Store
 
-# IDE/Editör dosyaları (Örnek: VS Code)
+IDE/Editör dosyaları (Örnek: VS Code)
+
 .vscode/
