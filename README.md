@@ -27,8 +27,8 @@ Bu proje, PHP (frameworksüz) ve SQLite veritabanı kullanılarak geliştirilmi�
 * **E-posta:** `admin@gmail.com`
 * **Şifre:** `123456789` 
 *SİSTEMDE YÜKLÜ 2 ADET FİRMA ADMİNİ VAR
-* muhammedtemli@gmail.com şifre:123456789
-* mehmetgursoy@gmail.com  şifre:123456789
+* `muhammedtemli@gmail.com` şifre:`123456789`
+* `mehmetgursoy@gmail.com`  şifre:`123456789`
 
 
 ## Kullanılan Teknolojiler
